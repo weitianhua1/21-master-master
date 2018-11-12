@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <ul id="parent-list">
+                <li id="post-1">项目 1</li>
+                <li id="post-2">项目 2</li>
+                <li id="post-3">项目 3</li>
+                <li id="post-4">项目 4</li>
+                <li id="post-5">项目 5</li>
+                <li id="post-6">项目 6</li>
+            </ul>
+ <script>
+ document.getElementById("parent-list").addEventListener("click", function(e) {
+	// e.target是被单击的元素!
+    // 如果被单击的元素节点名称是LI    
+	if(e.target && e.target.nodeName == "LI") {
+		//输出列表项被点击信息到控制台
+		console.log("列表项", e.target.id.replace("post-", ""), " 被点击");
+	}
+});
+ </script>   
+</body>
+</html>

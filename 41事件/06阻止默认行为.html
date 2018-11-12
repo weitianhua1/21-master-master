@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>阻止默认行为</title>
+    <style>
+      div {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="userName">用户名: </label>
+        <input id="userName" type="text">
+        <span id="userNameError" style="display:none;"></span>
+      </div>
+  
+      <div>
+        <label for="psw">密码 </label>
+        <input id="psw" type="text">
+        <span id="pswError" style="display:none;">密码不达标</span>
+      </div>
+      <div>
+        <input id="submit" type="submit">
+      </div>
+    </form>
+    <p></p>
+    <script>
+  // 获取css选择器的一个from元素
+      var form = document.querySelector('form');
+      var userName = document.getElementById('userName');
+      var psw = document.getElementById('psw');
+      // var para = document.querySelector('p');
+      var userNameError=document.getElementById('userNameError');
+      var pswError =document.getElementById('pswError');
+
+      var flagUserName=true;
+      var flagPsw=true;
+
+      userName.focus();
+
+      // form.onsubmit = function(e) {
+      //   var nameLenght
+      //   if(userName.value === '' || psw.value === '') {
+      //     e.preventDefault();
+      //     para.textContent = '用户名/密码不能为空'
+      //   }
+      // }
+      form.onsubmit = function(e) {
+        
+        if(userName.value.lenght >4&&userName.value.lenght <10){
+          flagUserName=false;
+          userNameError.style.display="none";
+
+        }
+     else{
+     userNameError.style.display="inline";
+     flagUserName=true;
+     
+      }
+      if (psw.value.lenght>1){
+        flagPsw=false;
+        pswError.style.display="none";
+      }
+      else{
+        flagPsw=true;
+        pswError.style.display="inline";
+      }
+      if(flagUserName || flagPsw){
+     
+        e.preventDefault();
+      }
+    }
+
+    </script>
+  </body>
+</html>

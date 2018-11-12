@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Useful event target example</title>
+    <style>
+      /* 设置背景颜色和宽高 */
+      div {
+        background-color: red;
+        height: 100px;
+        width: 25%;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      // 分为16块
+      for(var i = 1; i <= 16; i++) {
+        var myDiv = document.createElement('div');
+        document.body.appendChild(myDiv);
+      }
+//产生0-255之间的数字
+      function random(number) {
+        return Math.floor(Math.random()*number);
+      }
+    //  随即更换颜色
+      function bgChange() {
+        var rndCol = 'rgb(' + random(255) + ',' + random(255) + ',' + random(255) + ')';
+        return rndCol;语句终止
+      }
+// 获取全部的div元素
+      var divs = document.querySelectorAll('div');
+
+      for(var i = 0; i < divs.length; i++) {
+        //注册onclick单击事件，e为事件代表
+        divs[i].onclick = function(e) {
+          //e。target：哪个对象被点击则改变那个对象
+   
+          e.target.style.backgroundColor = bgChange();
+          //设置字符串调用bgChang
+        }
+      }
+    </script>
+  </body>
+</html>
