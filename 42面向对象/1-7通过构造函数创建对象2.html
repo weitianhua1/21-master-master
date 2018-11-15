@@ -1,0 +1,74 @@
+<script>
+  function Person(name, age) {
+    this.name = name;                // 添加name属性
+    this.age = age;                  // 添加age属性
+    this.sayHello = function () {    // 添加sayHello()方法
+      console.log('你好，我是' + this.name);
+    };
+  }
+  var p1 = new Person('张三', 18);
+  var p2 = new Person('李四', 19);
+  console.log(p1);                  // 输出结果：Person {name: "张三", age: 18}
+  console.log(p2);                  // 输出结果：Person {name: "李四", age: 19}
+  p1.sayHello();                    // 输出结果：你好，我是 张三
+  console.log(p1.constructor);      // 输出结果：function Person(name, age) ……
+
+
+
+  // 定义类---ES6新增
+  class Student {
+    //仅属性使用构造函数
+     constructor (name, age, gender) {    // 构造方法
+      this.name = name;                  // 添加name属性
+      this.age = age;                    // 添加age属性
+      this.gender = gender;              // 添加gender属性
+    }
+    //函数独立列出，不用function关键字
+    introduce() {                        // 定义introduce()方法
+      console.log('我是' + this.name + '，今年' + this.age + '岁。');
+    }
+  }
+  // 实例化时会自动调用constructor()构造方法
+  var st = new Student('王五', 19, '男');
+  st.introduce();    // 输出结果：我是王五，今年19岁。
+
+
+class product{
+  constructor(id,title,price,imgSrc){
+    this.id=id;
+    this.title=title;
+    this.price=price;
+    this.imgSrc=imgSrc;
+  }
+ 
+}
+var product1=new product('01','面膜',444,'images/01.jpg');
+var product2=new product('02','飞机',4.44,'images/02.jpg');
+
+console.log(product1);
+console.log(product2);
+console.log(product1.id);
+console.log(product2.id);
+console.log(product1['id']);
+console.log(product2['id']);
+
+class Order{
+  constructor(product,qty){
+   this.product=product;
+   this.qty=qty;
+  }
+ 
+}
+var order1=new Order(product1,5);
+console.log(order1);
+console.log(order1.product);
+console.log(order1.product.title);
+
+
+var order2=new Order(product2,9);
+console.log(order2);
+console.log(order2.product);
+console.log(order2.product.title);
+
+
+</script>
