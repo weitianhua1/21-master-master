@@ -33,42 +33,191 @@
   st.introduce();    // 输出结果：我是王五，今年19岁。
 
 
-class product{
-  constructor(id,title,price,imgSrc){
-    this.id=id;
-    this.title=title;
-    this.price=price;
-    this.imgSrc=imgSrc;
-  }
+// class product{
+//   constructor(id,title,price,imgSrc){
+//     this.id=id;
+//     this.title=title;
+//     this.price=price;
+//     this.imgSrc=imgSrc;
+//   }
  
-}
-var product1=new product('01','面膜',444,'images/01.jpg');
-var product2=new product('02','飞机',4.44,'images/02.jpg');
+// }
+// var product1=new product('01','面膜',444,'images/01.jpg');
+// var product2=new product('02','飞机',4.44,'images/02.jpg');
+
+// console.log(product1);
+// console.log(product2);
+// console.log(product1.id);
+// console.log(product2.id);
+// console.log(product1['id']);
+// console.log(product2['id']);
+
+// class Order{
+//   constructor(product,qty){
+//    this.product=product;
+//    this.qty=qty;
+//   }
+ 
+// }
+// var order1=new Order(product1,5);
+// console.log(order1);
+// console.log(order1.product);
+// console.log(order1.product.title);
+
+
+// var order2=new Order(product2,9);
+// console.log(order2);
+// console.log(order2.product);
+// console.log(order2.product.title);
+
+//商品类
+class  Product{
+    constructor (id,title,price,imgSrc) {   
+      //商品类成员
+     this.id 
+
+= id;
+     this.title= title;                   
+     this.price =price ; 
+     this.imgSrc=imgSrc;             
+   }
+
+ }
+
+ //商品对象/实例
+
+
+// console.log(product1);
 
 console.log(product1);
-console.log(product2);
-console.log(product1.id);
-console.log(product2.id);
-console.log(product1['id']);
-console.log(product2['id']);
-
 class Order{
   constructor(product,qty){
-   this.product=product;
-   this.qty=qty;
+    this.id=product.id;
+    this.title=product.title;
+    this.price=product.price;
+    this.imgSrc=product.imgSrc;
+    this.qty=qty;
   }
- 
 }
-var order1=new Order(product1,5);
-console.log(order1);
-console.log(order1.product);
-console.log(order1.product.title);
 
 
-var order2=new Order(product2,9);
-console.log(order2);
-console.log(order2.product);
-console.log(order2.product.title);
+// console.log(order);
+// console.log(product2);
+//.形式访问商品对象的属性
+// console.log(product1.id 
+
+// );
+// console.log(product2.id 
+
+// );
+//下标形式访问商品对象
+// console.log(product1['id']);
+// console.log(product2['id']);
+
+//订单类
+// class Order{
+//   constructor(product,qty){
+//     //订单成员
+//     this.product=product;
+//     this.qty=qty;
+//   }
+// }
+// //创建订单对象
+// var order=new Order(product1,5);
+// //获取订单对象
+// console.log(order);
+// //获得订单对象的product属性
+// console.log(order.product);
+// //获得订单对象的product属性的二级属性title
+// console.log(order.product.title);
+
+
+// var order2=new Order(product2,4);
+// console.log(product2.price);
+
+
+// var stList = new Array();
+// stList.push(product1);
+// console.log(stList[0].id);
+
+
+// console.log(stList);
+// var array = [new Product('01','30片巨补水 秋冬新款面膜',99.99,'images/01.jpg'),new Product('01','飞机',9.90,'images/02.jpg')]
+// console.log(array[1].id);
+// console.log(array);
+
+
+
+class CartData{
+  //数据成员 订单列表 总样本 总件数 总金额
+  constructor(){
+    this.orderList = new Array();
+    this.units = 0;
+    this.totalQty=0;
+    this.totalAmount = 0;
+  }
+}
+
+// console.log(product1);
+// class Order{
+//   constructor(product,qty){
+//     this.id=product.id;
+//     this.title=product.title;
+//     this.price=product.price;
+//     this.imgSrc=product.imgSrc;
+//     this.qty=qty;
+//   }
+// }
+
+// var order1=new Order(product1,5);
+// console.log(order1);
+
+function addtoCart(order){
+var flag=true;
+for (var i=0 ;i<myCart.orderList.length;i++) {
+if(order.id==myCart.orderList[i].id){
+  flag=false;
+  myCart.orderList[i].qty+=order.qty;
+   break;
+   }
+}
+if(flag){
+
+}
+else{
+  myCart.orderList.push(order);
+  myCart.units++;
+}
+myCart.totalQty +=order.qty;
+myCart.totalAmount +=order.price*order.qty;
+
+}
+
+ var product1 = new Product('01','30片巨补水 ',99.99,'images/01.jpg');
+ var product2 = new Product('01','面膜',9.90,'images/02.jpg');
+
+
+var myCart=new CartData();
+ var order=new Order(product1,5);
+addtoCart(order);
+
+// myCart.orderList.push(order);
+// myCart.units = 1;
+// myCart.totalQty=order.qty;
+// myCart.totalAmount=order.price*order.qty;
+console.log(myCart);
+
+
+order=new Order(product2,3);
+addtoCart(order);
+console.log(myCart);
+
+
+order=new Order(product2,1);
+addtoCart(order);
+console.log(myCart);
+
 
 
 </script>
+
