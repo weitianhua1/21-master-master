@@ -1,39 +1,47 @@
-var btnList=document.querySelectorAll('.btn-group .btn');
-var totalQty=document.getElementsByName('totalQty')[0];
+localStorage.setItem("key","value");//存储变量名为key，值为value的变量 
+localStorage.getItem("key");//获取存储的变量key的值
+localStorage.removeItem("key")//删除变量名为key的存储变量
+
+var btnList = document.querySelectorAll('.btn-group .btn');
+var totalQty = document.getElementsByName('totalQty')[0];
+
+
 
 for (const key in btnList) {
     if (btnList.hasOwnProperty(key)) {
         const element = btnList[key];
-        switch(element.name){
-            case 'increase':element.addEventListener('click',increaseValue);break;
-            case 'decrease':element.addEventListener('click',decreaseValue);break;
-            case 'addToCart':element.addEventListener('click',addToCart);break;
-        }        
+        switch (element.name) {
+            case 'increase': element.addEventListener('click', increaseValue); break;
+            case 'decrease': element.addEventListener('click', decreaseValue); break;
+            case 'addToCart': element.addEventListener('click', addToCart); break;
+        }
     }
 }
-function increaseValue(e){
-      var qtyObj=  e.target.nextElementSibling;
-      var qty=parseInt(qtyObj.innerText);
-      qty++;
-      qtyObj.innerText=qty;
-      console.log(qty);        
+function increaseValue(e) {
+    var qtyObj = e.target.nextElementSibling;
+    var qty = parseInt(qtyObj.innerText);
+    qty++;
+    qtyObj.innerText = qty;
+    console.log(qty);
 }
-function decreaseValue(e){
-    var qtyObj=  e.target.previousElementSibling;
-    var qty=parseInt(qtyObj.innerText);
-   if(qty>1) qty--;
-   else qty=0;
-    qtyObj.innerText=qty;
-    console.log(qty);        
+function decreaseValue(e) {
+    var qtyObj = e.target.previousElementSibling;
+    var qty = parseInt(qtyObj.innerText);
+    if (qty > 1) qty--;
+    else qty = 0;
+    qtyObj.innerText = qty;
+    console.log(qty);
 }
 
-function addToCart(e){
-    var qtyObj=  e.target.previousElementSibling.previousElementSibling;
-    var qty=parseInt(qtyObj.innerText);
-    var total=parseInt(totalQty.innerText);
-    total+=qty;
-    totalQty.innerText=total;  
-    //商品类
+function addToCart(e) {
+    var qtyObj = e.target.previousElementSibling.previousElementSibling;
+    var qty = parseInt(qtyObj.innerText);
+    var total = parseInt(totalQty.innerText);
+    total += qty;
+    totalQty.innerText = total;
+}
+
+//商品类
 class Product {
     constructor(id, Sname, imgSRC, price) {
         // 商品类成员
@@ -44,7 +52,7 @@ class Product {
     }
 }
 
-var product1 = new Product('01', '鼠标', '43bootstrap\images\02.jpg', 99);
+var product1 = new Product('01', '鼠标', '../image/KTV.png', 5.00);
 
 // 订单类成员
 class Order {
@@ -109,5 +117,5 @@ class ShoppingCart {
     clearCart(){
 
     }
-}
+
 }
