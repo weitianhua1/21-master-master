@@ -1,38 +1,38 @@
-var btnList=document.querySelectorAll('.btn-group .btn');
-var totalQty=document.getElementsByName('totalQty')[0];
+// var btnList=document.querySelectorAll('.btn-group .btn');
+// var totalQty=document.getElementsByName('totalQty')[0];
 
-for (const key in btnList) {
-    if (btnList.hasOwnProperty(key)) {
-        const element = btnList[key];
-        switch(element.name){
-            case 'increase':element.addEventListener('click',increaseValue);break;
-            case 'decrease':element.addEventListener('click',decreaseValue);break;
-            case 'addToCart':element.addEventListener('click',addToCart);break;
-        }        
-    }
-}
-function increaseValue(e){
-      var qtyObj=  e.target.nextElementSibling;
-      var qty=parseInt(qtyObj.innerText);
-      qty++;
-      qtyObj.innerText=qty;
-      console.log(qty);        
-}
-function decreaseValue(e){
-    var qtyObj=  e.target.previousElementSibling;
-    var qty=parseInt(qtyObj.innerText);
-   if(qty>1) qty--;
-   else qty=0;
-    qtyObj.innerText=qty;
-    console.log(qty);        
-}
+// for (const key in btnList) {
+//     if (btnList.hasOwnProperty(key)) {
+//         const element = btnList[key];
+//         switch(element.name){
+//             case 'increase':element.addEventListener('click',increaseValue);break;
+//             case 'decrease':element.addEventListener('click',decreaseValue);break;
+//             case 'addToCart':element.addEventListener('click',addToCart);break;
+//         }        
+//     }
+// }
+// function increaseValue(e){
+//       var qtyObj=  e.target.nextElementSibling;
+//       var qty=parseInt(qtyObj.innerText);
+//       qty++;
+//       qtyObj.innerText=qty;
+//       console.log(qty);        
+// }
+// function decreaseValue(e){
+//     var qtyObj=  e.target.previousElementSibling;
+//     var qty=parseInt(qtyObj.innerText);
+//    if(qty>1) qty--;
+//    else qty=0;
+//     qtyObj.innerText=qty;
+//     console.log(qty);        
+// }
 
-function addToCart(e){
-    var qtyObj=  e.target.previousElementSibling.previousElementSibling;
-    var qty=parseInt(qtyObj.innerText);
-    var total=parseInt(totalQty.innerText);
-    total+=qty;
-    totalQty.innerText=total;  
+// function addToCart(e){
+//     var qtyObj=  e.target.previousElementSibling.previousElementSibling;
+//     var qty=parseInt(qtyObj.innerText);
+//     var total=parseInt(totalQty.innerText);
+//     total+=qty;
+//     totalQty.innerText=total;  
     //商品类
 class Product {
     constructor(id, Sname, imgSRC, price) {
@@ -44,7 +44,7 @@ class Product {
     }
 }
 
-var product1 = new Product('01', '鼠标', '43bootstrap\images\02.jpg', 99);
+// var product1 = new Product('01', '鼠标', '43bootstrap\images\02.jpg', 99);
 
 // 订单类成员
 class Order {
@@ -58,8 +58,8 @@ class Order {
         this.selectStatus = selectStatus;
     }
 }
-var order = new Order(product1, 2, true);
-var Sname = order.Sname;
+// var order = new Order(product1, 2, true);
+// var Sname = order.Sname;
 
 // 购物车数据类---确定格式
 class Cartdata {
@@ -71,7 +71,7 @@ class Cartdata {
         this.totalAmount = 0;//总金额
     }
 }
-var cartdata = new Cartdata();
+// var cartdata = new Cartdata();
 
 //购物车操作类
 class ShoppingCart {
@@ -88,7 +88,7 @@ class ShoppingCart {
     }
     //  获取选中对象的订单列表
     getSelectedList() {
-      
+
     }
     // 获取选中对象列表的总数量
     getSelectedQty() {
@@ -102,12 +102,29 @@ class ShoppingCart {
     setItemSelectStatus(id, selectStatus) {
 
     }
-
-    addToCart(order){
+    // 加入购物车
+    addToCart(order) {
+        cartdata = this.getDataFromLocalStorage();
+        var isNewProduct = false;
+        for (const i in cartdata.orderList) {
+            if (order.id == cartdata.orderList[i].id) {
+                isNewProduct = true;
+                cartdata.orderList[i].qty += order.qty;
+                break;
+            }
+        }
+        // 如果是新商品
+        if (!isNewProduct) {
+            // 购物车总样本+1
+            cartdata.orderList.push(order);
+            cartdata.units++;
+        }
+        cartdata.totalQty += order.qty;
+        cartdata.totalAmount = order.price * order.qty;
+        this.setDataToLocalStorage(cartdata);
 
     }
-    clearCart(){
+    clearCart() {
 
     }
-}
 }

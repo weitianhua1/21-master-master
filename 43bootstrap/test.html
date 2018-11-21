@@ -8,27 +8,35 @@
 </head>
 
 <body>
-    <script src="./js/main.js"></script>
+    <script src="./js/shoppingCart.js"></script>
     <script>
         // 商品
-        var product1 = new Product('01', '鼠标', '43bootstrap\images\02.jpg', 99);
+        var product = new Product('01', 'cpu', '43bootstrap\images\02.jpg', 99);
         // 订单
-        var order=new Order(product1,2,true);
+        var order=new Order(product,3,true);
     //  购物车数据
-        var cartdata=new Cartdata();
+        // var cartdata=new Cartdata();
         // 将订单加入购物车
-      cartdata.orderList.push(order);
-      cartdata.totalQty=order.qty;
-      cartdata.totalAmount=order.qty*order.price;
-      cartdata.units = 1;
-console.log(cartdata);
+    //   cartdata.orderList.push(order);
+    //   cartdata.totalQty=order.qty;
+    //   cartdata.totalAmount=order.qty*order.price;
+    //   cartdata.units = 1;
+// console.log(cartdata);
       
 // 创建购物车操作类对象        
 var cart=new ShoppingCart();
 // 将购物车数据写入本地存储
-         cart.setDataToLocalStorage(cartdata);
-        // 将购物车数据读出来显示到控制台
-         console.log(cart.getDataFromLocalStorage());
+        //  cart.setDataToLocalStorage(cartdata);
+        // // 将购物车数据读出来显示到控制台
+        cart.addToCart(order);
+        product=new Product('02', '硬盘', '43bootstrap\images\02.jpg', 99);
+        order=new Order(product,5,true);
+        // 将新商品加入购物车
+        cart.addToCart(order);
+        //  console.log(cart.getDataFromLocalStorage());
+        console.log(cart.getDataFromLocalStorage());
+        console.log(cart.getSelectedQty());
+        console.log(cart.getSelectedAmount());
         </script>
 </body>
 </html>
