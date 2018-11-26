@@ -10,6 +10,8 @@
 <body>
     <script src="./js/shoppingCart.js"></script>
     <script>
+        var cart=new ShoppingCart();
+        cart.clearCart();
         // 商品
         var product = new Product('01', 'cpu', '43bootstrap\images\02.jpg', 99);
         // 订单
@@ -24,7 +26,7 @@
 // console.log(cartdata);
       
 // 创建购物车操作类对象        
-var cart=new ShoppingCart();
+
 // 将购物车数据写入本地存储
         //  cart.setDataToLocalStorage(cartdata);
         // // 将购物车数据读出来显示到控制台
@@ -37,6 +39,8 @@ var cart=new ShoppingCart();
         console.log(cart.getDataFromLocalStorage());
         console.log(cart.getSelectedQty());
         console.log(cart.getSelectedAmount());
+        cart.setItemSelectStatus('02',true);
+        cart.deleteItem('01');
         </script>
 </body>
 </html>

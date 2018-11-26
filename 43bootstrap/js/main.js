@@ -71,7 +71,7 @@ class Cartdata {
         this.totalAmount = 0;//总金额
     }
 }
-// var cartdata = new Cartdata();
+var cartdata = new Cartdata();
 
 //购物车操作类
 class ShoppingCart {
@@ -82,26 +82,7 @@ class ShoppingCart {
         // 写入本地存储
         localStorage.setItem('test', cartdataString);
     }
-    //   从本地存储中获取购物车数据
-    getDataFromLocalStorage() {
-        return localStorage.getItem('test');
-    }
-    //  获取选中对象的订单列表
-    getSelectedList() {
 
-    }
-    // 获取选中对象列表的总数量
-    getSelectedQty() {
-
-    }
-    // 获取选中对象列表的总价格
-    getSelectedAmount() {
-
-    }
-    // 设置购物车订单项选中状态
-    setItemSelectStatus(id, selectStatus) {
-
-    }
     // 加入购物车
     addToCart(order) {
         cartdata = this.getDataFromLocalStorage();
@@ -124,6 +105,67 @@ class ShoppingCart {
         this.setDataToLocalStorage(cartdata);
 
     }
+        //   从本地存储中获取购物车数据
+        getDataFromLocalStorage() {
+            return localStorage.getItem('test');
+        }
+        //  获取选中对象的订单列表
+        getSelectedList() {
+    
+        }  
+        // 获取选中对象列表的总数量
+        getSelectedQty() {
+    
+        }
+        // 获取选中对象列表的总价格
+        getSelectedAmount() {
+    
+        }
+        // 设置购物车订单项选中状态
+        setItemSelectStatus(id, selectStatus) {
+            //获取购物车数据
+            let cartdata = this.getDataFromLocalStorage();
+            let orderList = cartdata.orderList;
+            //   查找Id对应的订单
+            let order= this.find(id,orderList);
+            //   判断位置，位置为空报错提示，如果不为空就设置状态
+            if (order == null) {
+                //   没有找到id
+                console.log('订单ID有误');
+                return;
+            }
+            else {
+                //   找到对应id
+                order.selectStatus = selectStatus;
+            }
+            //   写入本地存储
+            this.setDataToLocalStorage(cartdata);
+        }
+    
+    
+        //     var cartdata = this.getDataFromLocalStorage();
+        //     let orderList = cartdata.orderList;
+        //     let isNewProduct = false;
+        //     for (const i in orderList) {
+        //         if (id == orderList[i].id) {
+        //             orderList[i].selectStatus = selectStatus;
+        //             isNewProduct = true;
+        //         }
+        //     }
+        //     if ( isNewProduct) this.setDataToLocalStorage(cartdata);
+        // }
+    
+        find(id,orderList) {
+            // let cartdata = this.getDataFromLocalStorage();
+            // let orderList = cartdata.orderList;
+          
+            for (const i in orderList) {
+                if (id == orderList[i].id) {
+                   return orderList[i];
+                }
+            }
+            return null;
+        }
     clearCart() {
 
     }
