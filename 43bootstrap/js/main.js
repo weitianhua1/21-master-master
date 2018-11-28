@@ -115,6 +115,7 @@ class ShoppingCart {
         }  
         // 获取选中对象列表的总数量
         getSelectedQty() {
+            
     
         }
         // 获取选中对象列表的总价格
