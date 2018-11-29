@@ -42,28 +42,12 @@
             <div class="col-1">操作</div>
           </div>
           <div id="cartContent">
-            <div class="row p-3 mt-1 bg-light">
+            <div class="row p-3 mt-1 bg-light d-none" id="orderExample">
               <div class="col-2"><input type="checkbox"></div>
               <div class="col-5">
-                <a href=""><img src="images/keai.jpg" alt="" width="100px" height="100px"></a><span>超级可爱版小宝贝大特卖</span>
+                <a href=""><img data-name="imgSrc" src="" alt="" width="100px" height="100px"></a><span data-name="title"></span>
               </div>
-              <div class="col-1 text-right ">¥<span name="price">0.00</span></div>
-              <div class="col-2">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-danger" name='increase'>+</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger disabled" name='qty'>0</button>
-                  <button type="button" class="btn btn-sm btn-outline-danger" name='decrease'>-</button>
-                </div>
-              </div>
-              <div class="col-1">¥<span name="subTotal">9.9</span></div>
-              <div class="col-1"><button class="btn btn-light" name='deleteItem'>删除</button></div>
-            </div>
-            <div class="row p-3 mt-1 bg-light">
-              <div class="col-2"><input type="checkbox"></div>
-              <div class="col-5">
-                <a href=""><img src="images/keai.jpg" alt="" width="100px" height="100px"></a><span>超级可爱版小宝贝大特卖</span>
-              </div>
-              <div class="col-1 text-right ">¥<span name="price">0.00</span></div>
+              <div class="col-1 text-right ">¥<span data-name="price">0.00</span></div>
               <div class="col-2">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-danger" name='increase'>+</button>
