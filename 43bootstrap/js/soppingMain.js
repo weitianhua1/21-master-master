@@ -1,4 +1,24 @@
+
+
+
 var cart = new ShoppingCart();
+const dataNameJson = {
+    "price": "[data-name='price']",
+    "qty": "[data-name='qty']",
+    "imgSrc": '[data-name="imgSrc"]',
+    "subPrice": '[data-name="subPrice"]',
+    "selectedQty": '[data-name="selectedQty"]',
+    "selectedAmount": '[data-name="selectedAmount"]',
+    "units": '[data-name="units"]'
+};
+
+const operatorNameJson = {
+    "checkItem": "[data-operator='checkItem']",
+    "increase": "[data-operator='increase']",
+    "decrease": "[data-operator='decrease']",
+    "deleteItem": "[data-operator='deleteItem']"
+};
+
 
 //显示购物车所有订单列表
 function displayOrderList() {
