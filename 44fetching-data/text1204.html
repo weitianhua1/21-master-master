@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <div class="=test2"></div>
+
+    </div>
+    <script>
+//      var request = new XMLHttpRequest();
+// // 设置请求对象
+// request.open('GET', 'verse4.txt');
+// // 设置响应类型 
+// request.responseType = 'text';
+// // 注册请求成功事件，事件发生后请求的响应数据response可用
+// request .onreadystatechange = function() {
+//     console.log(request.readyState);
+//     console.log(request.status);
+// if(request.readyState === 4 && request.status ==200){
+// let divNode=document.querySelector('#test');
+// divNode.textContent = request.response;
+// // request.response;
+
+//     }
+// }
+// request.send();
+
+ var textDiv2 = document.querySelector('.test2');
+        console.log(textDiv2);
+
+        var url2 = 'can-store-xhr/products.json';
+        // 1.0创建请求对象
+        var ajax2 = new XMLHttpRequest();
+
+        // 2.0设置请求对象
+        // 2.1用open() 方法来指定从网络请求资源的 HTTP request method , 以及URL。
+        ajax2.open('get', url2);
+        // 2.2设置响应类型 （返回什么类型的数据）
+        ajax2.responseType = 'json';
+        // 2.3注册请求成功事件，事件发生后请求的响应数据response可用
+        ajax2.onreadystatechange = function () {
+            if (ajax2.readyState == 4 && ajax2.status == 200)
+                console.log(ajax2.response);//ajax2.response为
+            };
+
+
+    </script>
+</body>
+</html>
